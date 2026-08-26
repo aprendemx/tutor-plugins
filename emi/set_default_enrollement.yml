@@ -1,0 +1,26 @@
+name: set_default_enrollment
+version: 0.1.2
+patches:
+      lms-env: |
+        BULK_EMAIL_DEFAULT_FROM_EMAIL: "contact@emi.aprende.gob.mx"
+        BULK_EMAIL_EMAILS_PER_TASK: 500
+        BULK_EMAIL_LOG_SENT_EMAILS: false
+        BULK_EMAIL_ROUTING_KEY_SMALL_JOBS: "edx.lms.core.default"
+        ENTERPRISE_COURSE_ENROLLMENT_AUDIT_MODES: ["honor","audit"]
+        COURSE_MODE_DEFAULTS: 
+           name: "Honor"
+           slug: "honor"
+           bulk_sku: null
+           currency: "usd"
+           description: "Honor"
+           expiration_datetime: null
+           min_price: 0
+           sku: null
+           suggested_prices: ""
+           ios_sku: ""
+           android_sku: ""
+      cms-env: |
+        BULK_EMAIL_DEFAULT_FROM_EMAIL: "contact@emi.aprende.gob.mx"
+        BULK_EMAIL_EMAILS_PER_TASK: 500
+        BULK_EMAIL_LOG_SENT_EMAILS: false
+        BULK_EMAIL_ROUTING_KEY_SMALL_JOBS: "edx.lms.core.default"       
