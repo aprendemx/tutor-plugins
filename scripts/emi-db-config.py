@@ -28,6 +28,7 @@ from django.contrib.sites.models import Site
 from django.conf import settings
 from openedx.core.djangoapps.site_configuration.models import SiteConfiguration
 from waffle.models import Flag, Switch
+from openedx.core.djangoapps.theming.models import SiteTheme
 
 # --- Waffle flags: activan los MFEs. Sin ellas se sirven plantillas Mako. ---
 FLAGS = [
@@ -103,5 +104,15 @@ for dominio in dominios():
         config.enabled = True
         config.save()
     print(f"  site    {dominio}: {'creada' if creada else 'actualizada'}")
+
+
+# El tema de los correos: los envia un worker de Celery, sin peticion HTTP,
+# asi que Open edX resuelve el tema por SITE_ID. Sin esta fila, los correos
+# salen con la plantilla del core en vez de la del tema.
+site_default = Site.objects.get(id=settings.SITE_ID)
+SiteTheme.objects.update_or_create(
+    site=site_default, defaults={"theme_dir_name": "emi"}
+)
+print(f"  tema    {site_default.domain} (SITE_ID): asignado a emi")
 
 print("=== listo ===")
