@@ -1,0 +1,9 @@
+name: rate_limit
+version: 0.1.1
+patches:
+      lms-env: |
+        REGISTRATION_RATELIMIT: "1000000/minute"
+        REGISTRATION_VALIDATION_RATELIMIT: "110000/minute"
+        RATELIMIT_RATE: "800/m"
+
+

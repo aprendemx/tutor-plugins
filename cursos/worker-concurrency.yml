@@ -1,0 +1,13 @@
+name: worker-concurrency
+version: 0.1.0
+patches:
+  local-docker-compose-override: |
+    cms-worker:
+      command: >
+        celery --app=cms.celery worker
+        --loglevel=info
+        --hostname=edx.cms.core.default.%h
+        --queues=edx.cms.core.default,edx.cms.core.high,edx.cms.core.high_mem,edx.cms.core.low
+        --concurrency=8
+        --max-tasks-per-child=100
+        --prefetch-multiplier=1

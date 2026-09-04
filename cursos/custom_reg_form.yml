@@ -1,0 +1,23 @@
+name: custom_reg_form
+version: 0.1.2
+patches:
+      lms-env: |
+        ADDL_INSTALLED_APPS: ["custom_reg_form"]
+        ENABLE_COMBINED_LOGIN_REGISTRATION: true,
+        REGISTRATION_EXTENSION_FORM: "custom_reg_form.forms.ExtraInfoForm"
+        ENABLE_DYNAMIC_REGISTRATION_FIELDS: true
+        ENABLE_PROGRESSIVE_PROFILING_ON_AUTHN: true
+        ESHOW_CONFIGURABLE_EDX_FIELDS: true
+        MFE_CONFIG:
+          ENABLE_DYNAMIC_REGISTRATION_FIELDS: false
+          ENABLE_ACCOUNT_DELETION: false
+      cms-env: |
+        ENABLE_COMBINED_LOGIN_REGISTRATION: true
+        ENABLE_DYNAMIC_REGISTRATION_FIELDS: false
+        ENABLE_PROGRESSIVE_PROFILING_ON_AUTHN: true
+        ESHOW_CONFIGURABLE_EDX_FIELDS: true
+
+      lms-env-features: |
+        ENABLE_ACCOUNT_DELETION: false
+        SKIP_EMAIL_VALIDATION: false
+        BYPASS_ACTIVATION_EMAIL_FOR_EXTAUTH: false          
