@@ -2,6 +2,21 @@
 # Configuración de la réplica local de cursos.aprende.gob.mx
 set -euo pipefail
 
+source "$(dirname "$0")/../versions.env"
+
+GH=https://github.com/aprendemx
+EXTRA_PIP=$(cat <<EOF
+["git+https://github.com/open-craft/xblock-poll.git@${XBLOCK_POLL_REF}",
+ "git+${GH}/Edx-Oauth2.git@${EDX_OAUTH2_REF}",
+ "git+${GH}/custom-registration-form.git@${CUSTOM_REG_FORM_REF}",
+ "git+${GH}/llavemx_mobile_bridge.git@${LLAVEMX_BRIDGE_REF}",
+ "git+${GH}/openedx-security-hardening.git@${HARDENING_REF}",
+ "git+${GH}/openedx-sso-gateway.git@${SSO_GATEWAY_REF}",
+ "git+${GH}/aprende-openedx-customizations.git@${APRENDE_CUSTOMIZATIONS_REF}"]
+EOF
+)
+EXTRA_PIP=$(echo "$EXTRA_PIP" | tr -d '\n ')
+
 tutor config save \
   --set LMS_HOST=local.openedx.io \
   --set CMS_HOST=studio.local.openedx.io \
@@ -13,7 +28,7 @@ tutor config save \
   --set INFO_EMAIL=contacto@aprende.gob.mx \
   --set ACTIVATION_EMAIL_SUPPORT_LINK=https://soporte.aprende.gob.mx \
   --set INDIGO_ENABLE_DARK_TOGGLE=false \
-  --set OPENEDX_EXTRA_PIP_REQUIREMENTS='["git+https://github.com/open-craft/xblock-poll.git@d2459e7bdf52fcb2b400684627bdcbd2e9302598","git+https://github.com/aprendemx/Edx-Oauth2.git@f4c735ce8aa549d64a0619b4155fec3c40318e63","git+https://github.com/aprendemx/custom-registration-form.git@0.1.8","git+https://github.com/aprendemx/llavemx_mobile_bridge.git@f100f336e0b04cd1e8ea8e520c78600ac835bd54","git+https://github.com/aprendemx/openedx-security-hardening.git@a2669e123e7c524c0679f75b759d9fa42b2d9479","git+https://github.com/aprendemx/openedx-sso-gateway.git@9b8ddff4353e85829e09844caa29b2e74acabb19","git+https://github.com/aprendemx/aprende-openedx-customizations.git@45ecd460e693c28b21f8034e8bae407a1a9e409f"]'
+  --set OPENEDX_EXTRA_PIP_REQUIREMENTS="$EXTRA_PIP"
 
 tutor plugins enable admin_password_reset aprende_customizations custom_reg_form \
   delete_account enable_bulk_email forum google_analytics gradebook indigo \
