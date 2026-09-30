@@ -32,7 +32,7 @@ tutor config save \
   --set ATLAS_REPOSITORY="$EMI_ATLAS_REPOSITORY" \
   --set ATLAS_REVISION="$EMI_ATLAS_REVISION"
 
-tutor plugins enable campos_extras custom_mfe emi forum google_analytics \
+tutor plugins enable campos_extras custom_mfe delete_account emi forum google_analytics \
   indigo mfe minio set_default_enrollment
 
 tutor config save 2>&1 | grep -iE "warn|fail|error" || true
