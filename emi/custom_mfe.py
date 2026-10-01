@@ -5,6 +5,16 @@ def override_all_mfes(mfes):
 
     # 1) Define aquí todos tus repositorios y ramas
     custom_repos = {
+        "learning": {
+            "repository": "https://github.com/aprendemx/emi-frontend-app-learning.git",
+            "port": 1997,
+            "version": "8bb822e342c445e39cc973435bc1647f16ae6c62",
+        },
+        "learner-dashboard": {
+            "repository": "https://github.com/aprendemx/emi-frontend-app-learner-dashboard.git",
+            "port": 1996,
+            "version": "ded563d9a3e7cf2a6a10f8c85a6216fbad156012",
+        },
         "profile": {
             "repository": "https://github.com/aprendemx/emi-frontend-app-profile.git",
             "port": 1995,

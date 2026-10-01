@@ -1,0 +1,22 @@
+// EMI: encabezado guinda sobre el encabezado de upstream (Ulmo).
+// #root porque la hoja de marca de Indigo usa ese prefijo y ganaría por especificidad.
+#root .site-header-desktop,
+#root .container-xl.py-2.d-flex.align-items-center { background-color: #5a122c !important; }
+#root .site-header-mobile { background-color: #5a122c !important; color: #fff !important; }
+#root header .logo img { height: 50px !important; width: auto !important; }
+#root header .nav-link,
+#root header a.text-gray-700 { color: #fff !important; }
+
+#root .course-title-lockup > div { display: flex; flex-direction: column-reverse; }
+#root .course-title-lockup .course-title,
+#root .course-title-lockup .small { color: #fff !important; }
+
+#root .user-dropdown .dropdown-toggle.btn {
+  background: #5a122c !important; color: #fff !important;
+  border: 1px solid #e6dbc7 !important; box-shadow: none !important; border-radius: 8px;
+}
+#root .user-dropdown .dropdown-toggle.btn:hover,
+#root .user-dropdown .dropdown-toggle.btn:focus { background: #e6dbc7 !important; color: #5a122c !important; }
+
+.theme-toggle-button,
+.mr-3:has(.theme-toggle-button) { display: none !important; }

@@ -28,11 +28,12 @@ tutor config save \
   --set OPENEDX_LMS_UWSGI_WORKERS=2 \
   --set OPENEDX_CMS_UWSGI_WORKERS=2 \
   --set LMS_ROOT_URLCONF=emi.urls \
+  --set INDIGO_ENABLE_DARK_TOGGLE=false \
   --set OPENEDX_EXTRA_PIP_REQUIREMENTS="$EXTRA_PIP" \
   --set ATLAS_REPOSITORY="$EMI_ATLAS_REPOSITORY" \
   --set ATLAS_REVISION="$EMI_ATLAS_REVISION"
 
-tutor plugins enable campos_extras custom_mfe delete_account emi forum google_analytics \
+tutor plugins enable campos_extras custom_mfe delete_account emi mfe_estilos forum google_analytics \
   indigo mfe minio set_default_enrollment
 
 tutor config save 2>&1 | grep -iE "warn|fail|error" || true
