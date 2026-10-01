@@ -8,7 +8,7 @@ def override_all_mfes(mfes):
         "profile": {
             "repository": "https://github.com/aprendemx/emi-frontend-app-profile.git",
             "port": 1995,
-            "version": "072caaf3fb3d551e45e8392ff00555e5d602cb56",
+            "version": "9e59006d2547b6b1937f96ebcf96bb6100dfa19b",
         },
         "authn":{
             "repository": "https://github.com/aprendemx/emi-frontend-app-authn.git",
