@@ -23,7 +23,7 @@ def override_all_mfes(mfes):
         "authn":{
             "repository": "https://github.com/aprendemx/emi-frontend-app-authn.git",
             "port": 2000,
-            "version": "dc25af3db0f854253e1340f23f8f99dce943caf8",
+            "version": "4d3406be3637d4396e968a204a836072335d621b",
         },
     }
 
